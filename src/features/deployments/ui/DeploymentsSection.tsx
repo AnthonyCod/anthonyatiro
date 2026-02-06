@@ -10,9 +10,11 @@ import { Container } from '@/shared/ui/Container/Container';
 import { Card } from '@/shared/ui/Card/Card';
 
 const projectGallery = {
-    orderly: ['/projects/orderly-1.jpg', '/projects/orderly-2.jpg', '/projects/orderly-3.jpg'],
-    skillconnect: ['/projects/skill-1.jpg', '/projects/skill-2.jpg'],
-    viajaya: ['/projects/viaja-1.jpg', '/projects/viaja-2.jpg']
+    orderly: ['/projects/orderly/first.png', '/projects/orderly/second.png'],
+    serviestiba: ['/projects/serviestiba/first.png', '/projects/serviestiba/second.png', '/projects/serviestiba/third.png', '/projects/serviestiba/fourth.png'],
+    viajaya: ['/projects/viaja-1.jpg'], // Pending images
+    altoq: ['/projects/altoq/first.png', '/projects/altoq/second.png', '/projects/altoq/third.png'],
+    skillconnect: ['/projects/skillconnect/first.png', '/projects/skillconnect/second.png', '/projects/skillconnect/third.png']
 };
 
 export function DeploymentsSection() {
@@ -49,7 +51,7 @@ export function DeploymentsSection() {
         setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
     };
 
-    const projects = ['orderly', 'skillconnect', 'viajaya'];
+    const projects = ['orderly', 'serviestiba', 'viajaya', 'altoq', 'skillconnect'];
 
     return (
         <section id="projects" className="py-24 relative overflow-hidden">
@@ -75,61 +77,77 @@ export function DeploymentsSection() {
 
                 {/* Projects Slider */}
                 <div className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
-                    {projects.map((project, index) => (
-                        <motion.div
-                            key={project}
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={inView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.6, delay: index * 0.2 }}
-                            className="flex-none w-[85vw] md:w-[400px] snap-center cursor-pointer"
-                            onClick={() => { setSelectedProject(project); setCurrentImageIndex(0); }}
-                        >
-                            <Card variant="glass" className="overflow-hidden group h-full flex flex-col hover:border-cyan-500/50 transform-gpu">
-                                {/* Project Image Preview */}
-                                <div className="relative h-48 bg-linear-to-br from-cyan-500/20 to-blue-500/20 overflow-hidden">
-                                    <div className="absolute inset-0 bg-linear-to-t from-gray-900 via-transparent to-transparent z-10" />
+                    {projects.map((project, index) => {
+                        const images = projectGallery[project as keyof typeof projectGallery] || [];
+                        const coverImage = images[0];
 
-                                    {/* Placeholder gradient */}
-                                    <div className="absolute inset-0 bg-linear-to-br from-cyan-500/30 via-blue-500/30 to-purple-500/30 group-hover:scale-110 transition-transform duration-500" />
-                                    
-                                    {/* Indication to click */}
-                                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-                                        <span className="bg-black/50 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-medium border border-white/10">
-                                            Ver Detalles
-                                        </span>
-                                    </div>
-                                </div>
-
-                                {/* Project Info */}
-                                <div className="p-6 flex-1 flex flex-col">
-                                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
-                                        {t(`projects.${project}.title`)}
-                                    </h3>
-
-                                    <p className="text-gray-400 text-sm mb-4 flex-1 line-clamp-3">
-                                        {t(`projects.${project}.description`)}
-                                    </p>
-
-                                    {/* Tech Stack Preview */}
-                                    <div className="flex flex-wrap gap-2">
-                                        {t.raw(`projects.${project}.tech`).slice(0, 3).map((tech: string) => (
-                                            <span
-                                                key={tech}
-                                                className="px-3 py-1 text-xs bg-cyan-500/10 border border-cyan-500/20 rounded-full text-cyan-400"
-                                            >
-                                                {tech}
-                                            </span>
-                                        ))}
-                                        {t.raw(`projects.${project}.tech`).length > 3 && (
-                                            <span className="px-3 py-1 text-xs bg-gray-800 border border-gray-700 rounded-full text-gray-400">
-                                                +{t.raw(`projects.${project}.tech`).length - 3}
-                                            </span>
+                        return (
+                            <motion.div
+                                key={project}
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={inView ? { opacity: 1, y: 0 } : {}}
+                                transition={{ duration: 0.6, delay: index * 0.2 }}
+                                className="flex-none w-[85vw] md:w-[400px] snap-center cursor-pointer"
+                                onClick={() => { setSelectedProject(project); setCurrentImageIndex(0); }}
+                            >
+                                <Card variant="glass" className="overflow-hidden group h-full flex flex-col hover:border-cyan-500/50 transform-gpu">
+                                    {/* Project Image Preview */}
+                                    <div className="relative h-72 bg-gray-900 overflow-hidden">
+                                        {coverImage && (
+                                            <Image
+                                                src={coverImage}
+                                                alt={t(`projects.${project}.title`)}
+                                                fill
+                                                className="object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                                            />
                                         )}
+
+                                        <div className="absolute inset-0 bg-linear-to-t from-gray-900 via-transparent to-transparent z-10" />
+
+                                        {/* Placeholder gradient fallback or verify overlay */}
+                                        {!coverImage && (
+                                            <div className="absolute inset-0 bg-linear-to-br from-cyan-500/30 via-blue-500/30 to-purple-500/30 group-hover:scale-110 transition-transform duration-500" />
+                                        )}
+
+                                        {/* Indication to click */}
+                                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                                            <span className="bg-black/50 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-medium border border-white/10">
+                                                Ver Detalles
+                                            </span>
+                                        </div>
                                     </div>
-                                </div>
-                            </Card>
-                        </motion.div>
-                    ))}
+
+                                    {/* Project Info */}
+                                    <div className="p-6 flex-1 flex flex-col">
+                                        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
+                                            {t(`projects.${project}.title`)}
+                                        </h3>
+
+                                        <p className="text-gray-400 text-sm mb-4 flex-1 line-clamp-3">
+                                            {t(`projects.${project}.description`)}
+                                        </p>
+
+                                        {/* Tech Stack Preview */}
+                                        <div className="flex flex-wrap gap-2">
+                                            {t.raw(`projects.${project}.tech`).slice(0, 3).map((tech: string) => (
+                                                <span
+                                                    key={tech}
+                                                    className="px-3 py-1 text-xs bg-cyan-500/10 border border-cyan-500/20 rounded-full text-cyan-400"
+                                                >
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                            {t.raw(`projects.${project}.tech`).length > 3 && (
+                                                <span className="px-3 py-1 text-xs bg-gray-800 border border-gray-700 rounded-full text-gray-400">
+                                                    +{t.raw(`projects.${project}.tech`).length - 3}
+                                                </span>
+                                            )}
+                                        </div>
+                                    </div>
+                                </Card>
+                            </motion.div>
+                        );
+                    })}
                 </div>
             </Container>
 
@@ -138,14 +156,14 @@ export function DeploymentsSection() {
                 {selectedProject && (
                     <div className="fixed inset-0 z-100 flex items-center justify-center p-4">
                         {/* Backdrop */}
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             onClick={() => setSelectedProject(null)}
                             className="absolute inset-0 bg-black/95 backdrop-blur-sm"
                         />
-                        
+
                         {/* Modal Content */}
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -158,7 +176,7 @@ export function DeploymentsSection() {
                                 <h3 className="text-2xl font-bold text-white">
                                     {t(`projects.${selectedProject}.title`)}
                                 </h3>
-                                <button 
+                                <button
                                     onClick={() => setSelectedProject(null)}
                                     className="p-2 hover:bg-white/10 rounded-full transition-colors text-gray-400 hover:text-white"
                                 >
@@ -173,7 +191,7 @@ export function DeploymentsSection() {
                                     <h4 className="text-sm font-semibold text-cyan-400 uppercase tracking-wider">
                                         {t('modal.gallery')}
                                     </h4>
-                                    <div className="relative h-56 md:h-72 w-full bg-gray-800 rounded-xl overflow-hidden border border-gray-700 group ring-1 ring-white/10 shadow-2xl">
+                                    <div className="relative h-80 md:h-[450px] w-full bg-gray-800 rounded-xl overflow-hidden border border-gray-700 group ring-1 ring-white/10 shadow-2xl">
                                         {/* Current Image */}
                                         <AnimatePresence mode="wait">
                                             <motion.div
@@ -184,7 +202,7 @@ export function DeploymentsSection() {
                                                 transition={{ duration: 0.3 }}
                                                 className="absolute inset-0 flex items-center justify-center bg-black/40"
                                             >
-                                                <Image 
+                                                <Image
                                                     src={projectGallery[selectedProject as keyof typeof projectGallery]?.[currentImageIndex] || ''}
                                                     alt={`Screenshot ${currentImageIndex + 1} of ${selectedProject}`}
                                                     fill
@@ -197,27 +215,27 @@ export function DeploymentsSection() {
                                         </AnimatePresence>
 
                                         {/* Navigation Buttons */}
-                                        <button 
+                                        <button
                                             onClick={(e) => { e.stopPropagation(); prevImage(); }}
                                             className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 hover:bg-cyan-500/80 text-white opacity-0 group-hover:opacity-100 transition-all transform hover:scale-110 backdrop-blur-sm border border-white/10 z-20"
                                         >
                                             <ChevronLeft className="w-6 h-6" />
                                         </button>
-                                        <button 
+                                        <button
                                             onClick={(e) => { e.stopPropagation(); nextImage(); }}
                                             className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 hover:bg-cyan-500/80 text-white opacity-0 group-hover:opacity-100 transition-all transform hover:scale-110 backdrop-blur-sm border border-white/10 z-20"
                                         >
                                             <ChevronRight className="w-6 h-6" />
                                         </button>
-                                        
+
                                         {/* Dots */}
                                         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 p-2 bg-black/30 rounded-full backdrop-blur-sm z-20">
                                             {projectGallery[selectedProject as keyof typeof projectGallery]?.map((_, idx) => (
-                                                    <button 
+                                                <button
                                                     key={idx}
                                                     onClick={() => setCurrentImageIndex(idx)}
                                                     className={`h-2 rounded-full transition-all duration-300 ${idx === currentImageIndex ? 'bg-cyan-400 w-8' : 'bg-gray-500 hover:bg-gray-400 w-2'}`}
-                                                    />
+                                                />
                                             ))}
                                         </div>
                                     </div>
@@ -230,7 +248,7 @@ export function DeploymentsSection() {
                                             {t('modal.about')}
                                         </h4>
                                         <p className="text-gray-300 leading-relaxed text-lg">
-                                            {t(`projects.${selectedProject}.description`)}
+                                            {t(`projects.${selectedProject}.fullDescription`)}
                                         </p>
                                     </div>
 

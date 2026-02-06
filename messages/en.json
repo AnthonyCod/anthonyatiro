@@ -64,28 +64,69 @@
             "orderly": {
                 "title": "Orderly (E-invoicing SaaS)",
                 "description": "Built the primary UI and a reusable component system using React, TypeScript, and Bun",
+                "fullDescription": "Electronic invoicing SaaS platform designed for small and medium-sized businesses. Led the complete frontend development, implementing a modular and reusable design system with React and TypeScript. Used Bun as runtime to significantly improve compilation and development times. The architecture includes state management with Zustand, form validation with React Hook Form, and a highly responsive user interface built with Tailwind CSS. Implemented key features such as PDF invoice generation, real-time analytics dashboard, and a robust authentication system with roles and permissions.",
                 "tech": [
                     "React",
                     "TypeScript",
-                    "Bun"
+                    "Bun",
+                    "Zustand",
+                    "Tailwind CSS",
+                    "React Hook Form"
                 ]
             },
-            "skillconnect": {
-                "title": "SkillConnect (E-learning)",
-                "description": "Full-stack educational platform featuring performance optimization and protected routing",
+            "serviestiba": {
+                "title": "Serviestiba (Logistics Management)",
+                "description": "Management system for stevedoring and port logistics operations",
+                "fullDescription": "Comprehensive logistics management system developed to optimize stevedoring operations in ports and warehouses. Built a complete web application that enables real-time container tracking, resource allocation, and operational report generation. The platform includes an interactive dashboard with data visualizations using Chart.js, real-time notification system with WebSockets, and a robust RESTful API built with Node.js and Express. Implemented JWT authentication, user role management (operators, supervisors, administrators), and PostgreSQL query optimization to handle large volumes of operational data.",
                 "tech": [
                     "React",
                     "Node.js",
-                    "PostgreSQL"
+                    "Express",
+                    "PostgreSQL",
+                    "WebSockets",
+                    "Chart.js",
+                    "JWT"
                 ]
             },
             "viajaya": {
                 "title": "Viaja Ya (PWA)",
                 "description": "Progressive Web App integrated with Google Maps API and real-time Geolocation",
+                "fullDescription": "Progressive Web App that won first place in an international hackathon in Cartagena, Colombia. Developed a ride-sharing platform that connects drivers and passengers in real-time. The application uses Google Maps API for optimized routes, real-time geolocation, and automatic fare calculation. Implemented advanced PWA features such as offline functionality, push notifications, and device installation. The backend is built with Node.js and uses Socket.io for real-time bidirectional communication. Includes rating system, trip history, and integrated payment gateway. The application is optimized for mobile performance with lazy loading and code splitting.",
                 "tech": [
                     "React",
                     "Google Maps API",
-                    "PWA"
+                    "PWA",
+                    "Socket.io",
+                    "Node.js",
+                    "MongoDB"
+                ]
+            },
+            "altoq": {
+                "title": "Altoq (B2B E-commerce)",
+                "description": "E-commerce platform for wholesale business transactions",
+                "fullDescription": "B2B e-commerce platform specialized in wholesale sales and inventory management for distributors. Developed the complete frontend using Next.js for SEO optimization and server-side rendering. The platform includes a product catalog system with advanced search and dynamic filters, persistent shopping cart, purchase order management, and shipment tracking. Implemented a complete administrative dashboard for inventory management, sales analytics, and corporate client administration. Used React Query for intelligent data caching, Stripe for payment processing, and an automated email notification system. The backend architecture is built with Node.js, Express, and PostgreSQL.",
+                "tech": [
+                    "Next.js",
+                    "React",
+                    "TypeScript",
+                    "Node.js",
+                    "PostgreSQL",
+                    "Stripe",
+                    "React Query"
+                ]
+            },
+            "skillconnect": {
+                "title": "SkillConnect (E-learning)",
+                "description": "Full-stack educational platform featuring performance optimization and protected routing",
+                "fullDescription": "Complete educational platform designed to connect instructors and students in an interactive learning environment. Developed both frontend and backend, implementing a course management system with video streaming, interactive assessments, and student progress tracking. The architecture includes secure authentication with JWT, role-based protected routes, and a granular permission system. Optimized performance through component lazy loading, code splitting, and strategic caching with React Query. The backend uses Node.js with Express, PostgreSQL for relational data, and AWS S3 for multimedia content storage. Implemented an automated grading system, real-time discussion forums, and dynamically generated digital certificates.",
+                "tech": [
+                    "React",
+                    "Node.js",
+                    "Express",
+                    "PostgreSQL",
+                    "AWS S3",
+                    "JWT",
+                    "React Query"
                 ]
             }
         },
