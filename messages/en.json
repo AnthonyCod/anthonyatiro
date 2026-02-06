@@ -15,15 +15,15 @@
     "hero": {
         "title": "ENGINEERING",
         "titleHighlight": "THE FUTURE",
-        "subtitle": "Frontend Engineer / Full Stack Developer",
-        "description": "Frontend Engineer with strong expertise in the React ecosystem (TypeScript, Zustand, Tailwind). Proven experience building scalable web platforms and high-performance applications in remote agile environments.",
+        "subtitle": "Software Engineer / Full Stack Developer",
+        "description": "Software Engineer with strong expertise in the React ecosystem (TypeScript, Zustand, Tailwind). Proven experience building scalable web platforms and high-performance applications in remote agile environments.",
         "cta": {
             "primary": "Get in Touch",
             "secondary": "View Projects"
         }
     },
     "techStack": {
-        "title": "TECH STACK INVENTORY",
+        "title": "Tech stack Inventory",
         "categories": {
             "frontend": "Frontend",
             "backend": "Backend",
@@ -58,7 +58,7 @@
         }
     },
     "deployments": {
-        "title": "Recent Deployments",
+        "title": "Profesional Projects",
         "viewAll": "View All Projects",
         "projects": {
             "orderly": {
@@ -88,6 +88,14 @@
                     "PWA"
                 ]
             }
+        },
+        "modal": {
+            "gallery": "Project Gallery",
+            "about": "About this Project",
+            "links": "Links",
+            "tech": "Technologies",
+            "code": "Code",
+            "demo": "Demo"
         }
     },
     "milestones": {
@@ -119,7 +127,8 @@
         "contact": {
             "email": "Send Email",
             "linkedin": "LinkedIn",
-            "github": "GitHub"
+            "github": "GitHub",
+            "instagram": "Instagram"
         }
     },
     "footer": {

@@ -15,15 +15,15 @@
     "hero": {
         "title": "CONSTRUYENDO",
         "titleHighlight": "EL FUTURO",
-        "subtitle": "Ingeniero Frontend / Desarrollador Full Stack",
-        "description": "Ingeniero Frontend con sólida experiencia en el ecosistema React (TypeScript, Zustand, Tailwind). Especializado en crear plataformas web escalables y aplicaciones de alto rendimiento en entornos ágiles remotos.",
+        "subtitle": "Ingeniero de Sotware / Desarrollador Full Stack",
+        "description": "Ingeniero de Sotware con sólida experiencia en el ecosistema React (TypeScript, Zustand, Tailwind). Especializado en crear plataformas web escalables y aplicaciones de alto rendimiento en entornos ágiles remotos.",
         "cta": {
             "primary": "Contactar",
             "secondary": "Ver Proyectos"
         }
     },
     "techStack": {
-        "title": "INVENTARIO DE TECNOLOGÍAS",
+        "title": "Inventario de Tecnologias",
         "categories": {
             "frontend": "Frontend",
             "backend": "Backend",
@@ -58,7 +58,7 @@
         }
     },
     "deployments": {
-        "title": "Despliegues Recientes",
+        "title": "Proyectos Profesionales",
         "viewAll": "Ver Todos los Proyectos",
         "projects": {
             "orderly": {
@@ -88,6 +88,14 @@
                     "PWA"
                 ]
             }
+        },
+        "modal": {
+            "gallery": "Galería del Proyecto",
+            "about": "Sobre este Proyecto",
+            "links": "Enlaces",
+            "tech": "Tecnologías",
+            "code": "Código",
+            "demo": "Demo"
         }
     },
     "milestones": {
@@ -119,7 +127,8 @@
         "contact": {
             "email": "Enviar Email",
             "linkedin": "LinkedIn",
-            "github": "GitHub"
+            "github": "GitHub",
+            "instagram": "Instagram"
         }
     },
     "footer": {

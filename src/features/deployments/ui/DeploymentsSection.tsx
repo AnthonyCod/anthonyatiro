@@ -1,18 +1,18 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { ExternalLink, Github, ArrowRight } from 'lucide-react';
+import { ExternalLink, Github, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { Container } from '@/shared/ui/Container/Container';
 import { Card } from '@/shared/ui/Card/Card';
-import { Button } from '@/shared/ui/Button/Button';
 
-const projectImages = {
-    ecommerce: '/projects/ecommerce.jpg',
-    analytics: '/projects/analytics.jpg',
-    api: '/projects/api.jpg'
+const projectGallery = {
+    orderly: ['/projects/orderly-1.jpg', '/projects/orderly-2.jpg', '/projects/orderly-3.jpg'],
+    skillconnect: ['/projects/skill-1.jpg', '/projects/skill-2.jpg'],
+    viajaya: ['/projects/viaja-1.jpg', '/projects/viaja-2.jpg']
 };
 
 export function DeploymentsSection() {
@@ -21,16 +21,43 @@ export function DeploymentsSection() {
         triggerOnce: true,
         threshold: 0.1
     });
+    const [selectedProject, setSelectedProject] = useState<string | null>(null);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    // Prevent scrolling when modal is open
+    useEffect(() => {
+        if (selectedProject) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+            setCurrentImageIndex(0);
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [selectedProject]);
+
+    const nextImage = () => {
+        if (!selectedProject) return;
+        const images = projectGallery[selectedProject as keyof typeof projectGallery] || [];
+        setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    };
+
+    const prevImage = () => {
+        if (!selectedProject) return;
+        const images = projectGallery[selectedProject as keyof typeof projectGallery] || [];
+        setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+    };
 
     const projects = ['orderly', 'skillconnect', 'viajaya'];
 
     return (
         <section id="projects" className="py-24 relative overflow-hidden">
             {/* Background with smooth transition */}
-            <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-950 to-black" />
+            <div className="absolute inset-0 bg-linear-to-b from-gray-900 via-gray-950 to-black" />
 
             {/* Top gradient overlay for smooth transition */}
-            <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-gray-900 to-transparent pointer-events-none z-10" />
+            <div className="absolute top-0 left-0 right-0 h-48 bg-linear-to-b from-gray-900 to-transparent pointer-events-none z-10" />
 
             <Container className="relative z-10" ref={ref}>
                 {/* Header */}
@@ -38,54 +65,38 @@ export function DeploymentsSection() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6 }}
-                    className="flex flex-col md:flex-row md:items-center md:justify-between mb-12"
+                    className="text-center mb-12"
                 >
-                    <div>
-                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                            {t('title')}
-                        </h2>
-                        <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full" />
-                    </div>
-
-                    <Button variant="outline" className="mt-6 md:mt-0 group">
-                        {t('viewAll')}
-                        <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </Button>
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                        {t('title')}
+                    </h2>
+                    <div className="w-24 h-1 bg-linear-to-r from-cyan-500 to-blue-500 mx-auto rounded-full" />
                 </motion.div>
 
-                {/* Projects Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {/* Projects Slider */}
+                <div className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
                     {projects.map((project, index) => (
                         <motion.div
                             key={project}
                             initial={{ opacity: 0, y: 30 }}
                             animate={inView ? { opacity: 1, y: 0 } : {}}
                             transition={{ duration: 0.6, delay: index * 0.2 }}
+                            className="flex-none w-[85vw] md:w-[400px] snap-center cursor-pointer"
+                            onClick={() => { setSelectedProject(project); setCurrentImageIndex(0); }}
                         >
-                            <Card variant="glass" className="overflow-hidden group h-full flex flex-col">
-                                {/* Project Image */}
-                                <div className="relative h-48 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 overflow-hidden">
-                                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent z-10" />
+                            <Card variant="glass" className="overflow-hidden group h-full flex flex-col hover:border-cyan-500/50 transform-gpu">
+                                {/* Project Image Preview */}
+                                <div className="relative h-48 bg-linear-to-br from-cyan-500/20 to-blue-500/20 overflow-hidden">
+                                    <div className="absolute inset-0 bg-linear-to-t from-gray-900 via-transparent to-transparent z-10" />
 
-                                    {/* Placeholder gradient - replace with actual images */}
-                                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/30 via-blue-500/30 to-purple-500/30 group-hover:scale-110 transition-transform duration-500" />
-
-                                    {/* Overlay Icons */}
-                                    <div className="absolute top-4 right-4 z-20 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <a
-                                            href="#"
-                                            className="p-2 rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors"
-                                            aria-label="View project"
-                                        >
-                                            <ExternalLink className="w-5 h-5 text-white" />
-                                        </a>
-                                        <a
-                                            href="#"
-                                            className="p-2 rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors"
-                                            aria-label="View code"
-                                        >
-                                            <Github className="w-5 h-5 text-white" />
-                                        </a>
+                                    {/* Placeholder gradient */}
+                                    <div className="absolute inset-0 bg-linear-to-br from-cyan-500/30 via-blue-500/30 to-purple-500/30 group-hover:scale-110 transition-transform duration-500" />
+                                    
+                                    {/* Indication to click */}
+                                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                                        <span className="bg-black/50 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-medium border border-white/10">
+                                            Ver Detalles
+                                        </span>
                                     </div>
                                 </div>
 
@@ -95,13 +106,13 @@ export function DeploymentsSection() {
                                         {t(`projects.${project}.title`)}
                                     </h3>
 
-                                    <p className="text-gray-400 text-sm mb-4 flex-1">
+                                    <p className="text-gray-400 text-sm mb-4 flex-1 line-clamp-3">
                                         {t(`projects.${project}.description`)}
                                     </p>
 
-                                    {/* Tech Stack */}
+                                    {/* Tech Stack Preview */}
                                     <div className="flex flex-wrap gap-2">
-                                        {t.raw(`projects.${project}.tech`).map((tech: string) => (
+                                        {t.raw(`projects.${project}.tech`).slice(0, 3).map((tech: string) => (
                                             <span
                                                 key={tech}
                                                 className="px-3 py-1 text-xs bg-cyan-500/10 border border-cyan-500/20 rounded-full text-cyan-400"
@@ -109,6 +120,11 @@ export function DeploymentsSection() {
                                                 {tech}
                                             </span>
                                         ))}
+                                        {t.raw(`projects.${project}.tech`).length > 3 && (
+                                            <span className="px-3 py-1 text-xs bg-gray-800 border border-gray-700 rounded-full text-gray-400">
+                                                +{t.raw(`projects.${project}.tech`).length - 3}
+                                            </span>
+                                        )}
                                     </div>
                                 </div>
                             </Card>
@@ -116,6 +132,149 @@ export function DeploymentsSection() {
                     ))}
                 </div>
             </Container>
+
+            {/* Project Details Modal - Moved outside Container to prevent z-index/fixed position issues */}
+            <AnimatePresence>
+                {selectedProject && (
+                    <div className="fixed inset-0 z-100 flex items-center justify-center p-4">
+                        {/* Backdrop */}
+                        <motion.div 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setSelectedProject(null)}
+                            className="absolute inset-0 bg-black/95 backdrop-blur-sm"
+                        />
+                        
+                        {/* Modal Content */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                            className="relative w-full max-w-5xl bg-gray-900 border border-gray-800 rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
+                        >
+                            {/* Header */}
+                            <div className="flex items-center justify-between p-6 border-b border-gray-800 bg-gray-900/50 backdrop-blur-md sticky top-0 z-10">
+                                <h3 className="text-2xl font-bold text-white">
+                                    {t(`projects.${selectedProject}.title`)}
+                                </h3>
+                                <button 
+                                    onClick={() => setSelectedProject(null)}
+                                    className="p-2 hover:bg-white/10 rounded-full transition-colors text-gray-400 hover:text-white"
+                                >
+                                    <X className="w-6 h-6" />
+                                </button>
+                            </div>
+
+                            {/* Scrollable Body */}
+                            <div className="overflow-y-auto p-6 space-y-8">
+                                {/* Gallery Section */}
+                                <div className="space-y-4">
+                                    <h4 className="text-sm font-semibold text-cyan-400 uppercase tracking-wider">
+                                        {t('modal.gallery')}
+                                    </h4>
+                                    <div className="relative h-56 md:h-72 w-full bg-gray-800 rounded-xl overflow-hidden border border-gray-700 group ring-1 ring-white/10 shadow-2xl">
+                                        {/* Current Image */}
+                                        <AnimatePresence mode="wait">
+                                            <motion.div
+                                                key={currentImageIndex}
+                                                initial={{ opacity: 0, x: 20 }}
+                                                animate={{ opacity: 1, x: 0 }}
+                                                exit={{ opacity: 0, x: -20 }}
+                                                transition={{ duration: 0.3 }}
+                                                className="absolute inset-0 flex items-center justify-center bg-black/40"
+                                            >
+                                                <Image 
+                                                    src={projectGallery[selectedProject as keyof typeof projectGallery]?.[currentImageIndex] || ''}
+                                                    alt={`Screenshot ${currentImageIndex + 1} of ${selectedProject}`}
+                                                    fill
+                                                    className="object-cover"
+                                                    priority={currentImageIndex === 0}
+                                                />
+                                                {/* Gradient overlay for better text contrast if needed */}
+                                                <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-black/50 pointer-events-none" />
+                                            </motion.div>
+                                        </AnimatePresence>
+
+                                        {/* Navigation Buttons */}
+                                        <button 
+                                            onClick={(e) => { e.stopPropagation(); prevImage(); }}
+                                            className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 hover:bg-cyan-500/80 text-white opacity-0 group-hover:opacity-100 transition-all transform hover:scale-110 backdrop-blur-sm border border-white/10 z-20"
+                                        >
+                                            <ChevronLeft className="w-6 h-6" />
+                                        </button>
+                                        <button 
+                                            onClick={(e) => { e.stopPropagation(); nextImage(); }}
+                                            className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 hover:bg-cyan-500/80 text-white opacity-0 group-hover:opacity-100 transition-all transform hover:scale-110 backdrop-blur-sm border border-white/10 z-20"
+                                        >
+                                            <ChevronRight className="w-6 h-6" />
+                                        </button>
+                                        
+                                        {/* Dots */}
+                                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 p-2 bg-black/30 rounded-full backdrop-blur-sm z-20">
+                                            {projectGallery[selectedProject as keyof typeof projectGallery]?.map((_, idx) => (
+                                                    <button 
+                                                    key={idx}
+                                                    onClick={() => setCurrentImageIndex(idx)}
+                                                    className={`h-2 rounded-full transition-all duration-300 ${idx === currentImageIndex ? 'bg-cyan-400 w-8' : 'bg-gray-500 hover:bg-gray-400 w-2'}`}
+                                                    />
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Description & Details Grid */}
+                                <div className="grid md:grid-cols-3 gap-8">
+                                    <div className="md:col-span-2 space-y-4">
+                                        <h4 className="text-sm font-semibold text-cyan-400 uppercase tracking-wider">
+                                            {t('modal.about')}
+                                        </h4>
+                                        <p className="text-gray-300 leading-relaxed text-lg">
+                                            {t(`projects.${selectedProject}.description`)}
+                                        </p>
+                                    </div>
+
+                                    <div className="space-y-6">
+                                        {/* Links */}
+                                        <div className="space-y-3">
+                                            <h4 className="text-sm font-semibold text-cyan-400 uppercase tracking-wider">
+                                                {t('modal.links')}
+                                            </h4>
+                                            <div className="flex gap-3">
+                                                <a href="#" className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-white transition-colors" target="_blank" rel="noopener noreferrer">
+                                                    <Github className="w-5 h-5" />
+                                                    <span>{t('modal.code')}</span>
+                                                </a>
+                                                <a href="#" className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/20 rounded-lg text-cyan-400 transition-colors" target="_blank" rel="noopener noreferrer">
+                                                    <ExternalLink className="w-5 h-5" />
+                                                    <span>{t('modal.demo')}</span>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        {/* Tech Stack Full List */}
+                                        <div className="space-y-3">
+                                            <h4 className="text-sm font-semibold text-cyan-400 uppercase tracking-wider">
+                                                {t('modal.tech')}
+                                            </h4>
+                                            <div className="flex flex-wrap gap-2">
+                                                {t.raw(`projects.${selectedProject}.tech`).map((tech: string) => (
+                                                    <span
+                                                        key={tech}
+                                                        className="px-3 py-1 text-sm bg-gray-800 border border-gray-700 rounded-lg text-gray-300"
+                                                    >
+                                                        {tech}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
         </section>
     );
 }

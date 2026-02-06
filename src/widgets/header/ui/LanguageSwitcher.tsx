@@ -2,17 +2,15 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
-import { Globe } from 'lucide-react';
-import { cn } from '@/shared/lib/utils';
-import { locales, type Locale } from '@/config';
+import { type Locale } from '@/config';
 
 export function LanguageSwitcher() {
     const locale = useLocale() as Locale;
     const pathname = usePathname();
     const router = useRouter();
 
-    const handleLocaleChange = (newLocale: Locale) => {
-        if (newLocale === locale) return;
+    const toggleLocale = () => {
+        const newLocale = locale === 'en' ? 'es' : 'en';
 
         // Replace the locale in the pathname
         const segments = pathname.split('/');
@@ -23,34 +21,29 @@ export function LanguageSwitcher() {
     };
 
     return (
-        <div className="relative group">
-            <button
-                className="flex items-center gap-2 px-3 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-200"
-                aria-label="Change language"
-            >
-                <Globe className="w-5 h-5" />
-                <span className="text-sm font-medium uppercase">{locale}</span>
-            </button>
-
-            {/* Dropdown */}
-            <div className="absolute right-0 mt-2 w-40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div className="bg-gray-900 border border-gray-800 rounded-lg shadow-xl overflow-hidden">
-                    {locales.map((loc) => (
-                        <button
-                            key={loc}
-                            onClick={() => handleLocaleChange(loc)}
-                            className={cn(
-                                'w-full px-4 py-3 text-left text-sm transition-colors duration-150',
-                                locale === loc
-                                    ? 'bg-cyan-500/20 text-cyan-400 font-medium'
-                                    : 'text-gray-300 hover:bg-white/5 hover:text-white'
-                            )}
-                        >
-                            {loc === 'en' ? 'English' : 'Español'}
-                        </button>
-                    ))}
-                </div>
-            </div>
-        </div>
+        <button
+            onClick={toggleLocale}
+            className="flex items-center gap-2 px-3 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-200 cursor-pointer"
+            aria-label={locale === 'en' ? 'Switch to Spanish' : 'Cambiar a Inglés'}
+        >
+            {locale === 'en' ? (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 741 390" className="w-6 h-auto rounded-sm shadow-sm flex-shrink-0 object-cover">
+                    <rect width="741" height="390" fill="#b22234"/>
+                    <rect y="30" width="741" height="30" fill="#fff"/>
+                    <rect y="90" width="741" height="30" fill="#fff"/>
+                    <rect y="150" width="741" height="30" fill="#fff"/>
+                    <rect y="210" width="741" height="30" fill="#fff"/>
+                    <rect y="270" width="741" height="30" fill="#fff"/>
+                    <rect y="330" width="741" height="30" fill="#fff"/>
+                    <rect width="296" height="210" fill="#3c3b6e"/>
+                </svg>
+            ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 500" className="w-6 h-auto rounded-sm shadow-sm flex-shrink-0 object-cover">
+                    <rect width="750" height="500" fill="#c60b1e"/>
+                    <rect y="125" width="750" height="250" fill="#ffc400"/>
+                </svg>
+            )}
+            <span className="text-sm font-medium uppercase">{locale}</span>
+        </button>
     );
 }

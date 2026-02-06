@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Briefcase, GraduationCap, Code } from 'lucide-react';
 import { Container } from '@/shared/ui/Container/Container';
+import { Card } from '@/shared/ui/Card/Card';
 
 const milestoneIcons = {
     orderly: Briefcase,
@@ -21,15 +22,21 @@ export function MilestonesSection() {
 
     const milestones = ['orderly', 'skillconnect', 'education'];
 
+    const milestoneImages = {
+        orderly: '/image.png', // Replace with actual project/experience images
+        skillconnect: '/image.png',
+        education: '/image.png'
+    };
+
     return (
         <section id="milestones" className="py-24 relative overflow-hidden">
             {/* Background with smooth transition */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-gray-900">
+            <div className="absolute inset-0 bg-linear-to-b from-black via-gray-950 to-gray-900">
                 <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
             </div>
 
             {/* Top gradient overlay for smooth transition */}
-            <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-black to-transparent pointer-events-none z-10" />
+            <div className="absolute top-0 left-0 right-0 h-48 bg-linear-to-b from-black to-transparent pointer-events-none z-10" />
 
             <Container className="relative z-10" ref={ref}>
                 {/* Title */}
@@ -42,78 +49,85 @@ export function MilestonesSection() {
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
                         {t('title')}
                     </h2>
-                    <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto rounded-full" />
+                    <div className="w-24 h-1 bg-linear-to-r from-cyan-500 to-blue-500 mx-auto rounded-full" />
                 </motion.div>
 
-                {/* Content */}
-                <div className="max-w-4xl mx-auto relative">
-                    {/* Continuous Line - Absolute Center (Desktop) or Left (Mobile) */}
-                    <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500/50 via-cyan-500 to-blue-500/50 -translate-x-1/2" />
+                {/* Timeline Horizontal Scroll Container */}
+                <div className="relative pt-16">
+                    {/* Horizontal Axis Line - Now clearly visible as the 'Time Spine' */}
+                    <div className="absolute top-[5.5rem] left-0 w-full h-0.5 bg-linear-to-r from-transparent via-cyan-500/30 to-transparent pointer-events-none" />
+                    
+                    <div className="flex overflow-x-auto gap-8 pb-12 px-4 md:px-0 scrollbar-hide snap-x snap-mandatory py-10">
+                        {milestones.map((milestone, index) => {
+                            // @ts-ignore
+                            const imagePath = milestoneImages[milestone];
 
-                    {milestones.map((milestone, index) => {
-                        const isEven = index % 2 === 0;
+                            return (
+                                <motion.div
+                                    key={milestone}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                                    transition={{ duration: 0.5, delay: index * 0.2 }}
+                                    className="relative flex-none w-[85vw] md:w-[450px] snap-center flex flex-col items-center"
+                                >
+                                    {/* Timeline Marker Group */}
+                                    <div className="absolute -top-10 left-1/2 -translate-x-1/2 flex flex-col items-center z-20 w-max">
+                                        {/* Date Label - Floating Above */}
+                                        <div className="mb-3 px-4 py-1 rounded-full bg-cyan-950/50 border border-cyan-500/30 text-cyan-400 font-bold text-sm tracking-widest uppercase backdrop-blur-md shadow-[0_0_15px_rgba(34,211,238,0.2)]">
+                                            {t(`timeline.${milestone}.date`)}
+                                        </div>
+                                        
+                                        {/* The Dot on the Axis */}
+                                        <div className="w-4 h-4 bg-cyan-400 rounded-full shadow-[0_0_15px_rgba(34,211,238,1)] border-2 border-gray-900 relative z-10 box-content" />
+                                        
+                                        {/* Vertical Connector Line to Card */}
+                                        <div className="w-0.5 h-8 bg-linear-to-b from-cyan-400 to-transparent opacity-50" />
+                                    </div>
 
-                        return (
-                            <motion.div
-                                key={milestone}
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={inView ? { opacity: 1, y: 0 } : {}}
-                                transition={{ duration: 0.5, delay: index * 0.2 }}
-                                className="relative mb-16 last:mb-0"
-                            >
-                                <div className="flex md:items-center flex-col md:flex-row gap-6 md:gap-0">
-
-                                    {/* Simple Dot on the Line */}
-                                    <div className="absolute left-6 md:left-1/2 w-4 h-4 bg-cyan-400 rounded-full shadow-[0_0_15px_rgba(34,211,238,0.8)] -translate-x-1/2 mt-6 md:mt-0 z-10 border-2 border-black" />
-
-                                    {/* Content Card - Left Side (Desktop Even) */}
-                                    <div className={`w-full md:w-1/2 pl-16 md:pl-0 ${isEven ? 'md:pr-12 md:text-right md:order-1' : 'md:hidden'}`}>
-                                        <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-gray-700 rounded-xl p-6 hover:border-cyan-500/50 transition-all duration-300 group">
-                                            <div className="text-cyan-400 font-semibold mb-2">
-                                                {t(`timeline.${milestone}.date`)}
+                                    {/* Content Card */}
+                                    <Card variant="glass" className="w-full mt-8 overflow-hidden flex flex-col group border-gray-800 hover:border-cyan-500/50 transition-all duration-700 ease-in-out shadow-lg hover:shadow-cyan-900/20">
+                                        {/* Image */}
+                                        {imagePath && (
+                                            <div className="relative h-56 w-full overflow-hidden shrink-0">
+                                                <div className="absolute inset-0 bg-gray-900/10 group-hover:bg-transparent transition-colors duration-700 ease-in-out z-10" />
+                                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                                <img 
+                                                    src={imagePath} 
+                                                    alt={t(`timeline.${milestone}.title`)}
+                                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-in-out"
+                                                />
                                             </div>
-                                            <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
+                                        )}
+
+                                        {/* Content */}
+                                        <div className="p-6 flex flex-col flex-1 relative">
+                                            {/* Decorative top grad */}
+                                            <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-cyan-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out" />
+                                            
+                                            <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-700 ease-in-out">
                                                 {t(`timeline.${milestone}.title`)}
                                             </h3>
-                                            <p className="text-gray-400 leading-relaxed">
+                                            <p className="text-gray-400 leading-relaxed text-sm">
                                                 {t(`timeline.${milestone}.description`)}
                                             </p>
                                         </div>
-                                    </div>
-
-                                    {/* Content Card - Right Side (Desktop Odd & Mobile All) */}
-                                    <div className={`w-full md:w-1/2 pl-16 md:pl-0 ${isEven ? 'md:hidden' : 'md:pl-12 md:ml-auto md:order-2'}`}>
-                                        <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-gray-700 rounded-xl p-6 hover:border-cyan-500/50 transition-all duration-300 group">
-                                            <div className="text-cyan-400 font-semibold mb-2">
-                                                {t(`timeline.${milestone}.date`)}
-                                            </div>
-                                            <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
-                                                {t(`timeline.${milestone}.title`)}
-                                            </h3>
-                                            <p className="text-gray-400 leading-relaxed">
-                                                {t(`timeline.${milestone}.description`)}
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </motion.div>
-                        );
-                    })}
+                                    </Card>
+                                </motion.div>
+                            );
+                        })}
+                    </div>
                 </div>
 
-                {/* Bottom Decoration */}
+                {/* Bottom Decoration - Pagination or Scroll Hint */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={inView ? { opacity: 1, scale: 1 } : {}}
+                    initial={{ opacity: 0 }}
+                    animate={inView ? { opacity: 1 } : {}}
                     transition={{ duration: 0.6, delay: 0.8 }}
-                    className="mt-12 flex justify-center"
+                    className="flex justify-center gap-2 mt-4"
                 >
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center shadow-lg shadow-cyan-500/50">
-                        <div className="w-12 h-12 rounded-full bg-gray-900 flex items-center justify-center">
-                            <div className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse" />
-                        </div>
-                    </div>
+                    {milestones.map((_, i) => (
+                        <div key={i} className="w-2 h-2 rounded-full bg-gray-700" />
+                    ))}
                 </motion.div>
             </Container>
         </section>

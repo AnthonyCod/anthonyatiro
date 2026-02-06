@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Mail, Linkedin, Github, Send } from 'lucide-react';
+import { Linkedin, Github, Send, Instagram } from 'lucide-react';
 import { Container } from '@/shared/ui/Container/Container';
 import { Button } from '@/shared/ui/Button/Button';
 
@@ -15,15 +15,16 @@ export function CTASection() {
     });
 
     const contactLinks = [
-        { key: 'email', icon: Mail, href: 'mailto:contact@anthonyatiro.com' },
-        { key: 'linkedin', icon: Linkedin, href: 'https://linkedin.com/in/anthonyatiro' },
-        { key: 'github', icon: Github, href: 'https://github.com/anthonyatiro' }
+
+        { key: 'linkedin', icon: Linkedin, href: 'https://www.linkedin.com/in/luis-anthony-atiro-vargas-98b608289' },
+        { key: 'github', icon: Github, href: 'https://github.com/AnthonyCod' },
+        { key: 'instagram', icon: Instagram, href: 'https://www.instagram.com/anthonyatiro/' }
     ];
 
     return (
         <section id="contact" className="py-32 relative overflow-hidden">
             {/* Animated Background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-950 to-black">
+            <div className="absolute inset-0 bg-linear-to-br from-gray-900 via-gray-950 to-black">
                 <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20" />
                 <motion.div
                     animate={{
@@ -53,7 +54,7 @@ export function CTASection() {
             </div>
 
             {/* Top gradient overlay for smooth transition */}
-            <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-gray-900 to-transparent pointer-events-none z-20" />
+            <div className="absolute top-0 left-0 right-0 h-48 bg-linear-to-b from-gray-900 to-transparent pointer-events-none z-20" />
 
             <Container className="relative z-10" ref={ref}>
                 <div className="max-w-4xl mx-auto text-center">
@@ -67,7 +68,7 @@ export function CTASection() {
                         <h2 className="text-5xl md:text-7xl font-bold leading-tight mb-4">
                             <span className="text-white">{t('title')}</span>
                             <br />
-                            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+                            <span className="bg-linear-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
                                 {t('titleHighlight')}
                             </span>
                             <br />
@@ -92,10 +93,17 @@ export function CTASection() {
                         transition={{ duration: 0.6, delay: 0.4 }}
                         className="mb-12"
                     >
-                        <Button variant="primary" size="lg" className="group text-lg px-10 py-5">
-                            {t('button')}
-                            <Send className="ml-3 w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                        </Button>
+                        <a 
+                            href="https://www.linkedin.com/in/luis-anthony-atiro-vargas-98b608289"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block"
+                        >
+                            <Button variant="primary" size="lg" className="group text-lg px-10 py-5">
+                                {t('button')}
+                                <Send className="ml-3 w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                            </Button>
+                        </a>
                     </motion.div>
 
                     {/* Contact Links */}
