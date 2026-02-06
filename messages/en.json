@@ -1,0 +1,129 @@
+{
+    "header": {
+        "nav": {
+            "home": "Home",
+            "tech": "Tech Stack",
+            "projects": "Projects",
+            "milestones": "Milestones",
+            "contact": "Contact"
+        },
+        "language": {
+            "en": "English",
+            "es": "Spanish"
+        }
+    },
+    "hero": {
+        "title": "ENGINEERING",
+        "titleHighlight": "THE FUTURE",
+        "subtitle": "Frontend Engineer / Full Stack Developer",
+        "description": "Frontend Engineer with strong expertise in the React ecosystem (TypeScript, Zustand, Tailwind). Proven experience building scalable web platforms and high-performance applications in remote agile environments.",
+        "cta": {
+            "primary": "Get in Touch",
+            "secondary": "View Projects"
+        }
+    },
+    "techStack": {
+        "title": "TECH STACK INVENTORY",
+        "categories": {
+            "frontend": "Frontend",
+            "backend": "Backend",
+            "database": "Database & Tools",
+            "devops": "DevOps",
+            "tools": "Testing"
+        }
+    },
+    "performance": {
+        "title": "ACHIEVEMENTS & CERTIFICATIONS",
+        "metrics": {
+            "hackathon": {
+                "title": "Hackathon Winner",
+                "value": "1st Place",
+                "description": "'Viaja Ya' International Coding Competition (Cartagena, Colombia)"
+            },
+            "reactExpert": {
+                "title": "React Expert",
+                "value": "Certified",
+                "description": "React: From Zero to Expert certification via Udemy"
+            },
+            "nodejs": {
+                "title": "Node.js Developer",
+                "value": "Certified",
+                "description": "Remote Node.js Developer Path certification via Platzi"
+            },
+            "bilingual": {
+                "title": "Bilingual",
+                "value": "C1 / Native",
+                "description": "Advanced English (C1) and Native Spanish speaker"
+            }
+        }
+    },
+    "deployments": {
+        "title": "Recent Deployments",
+        "viewAll": "View All Projects",
+        "projects": {
+            "orderly": {
+                "title": "Orderly (E-invoicing SaaS)",
+                "description": "Built the primary UI and a reusable component system using React, TypeScript, and Bun",
+                "tech": [
+                    "React",
+                    "TypeScript",
+                    "Bun"
+                ]
+            },
+            "skillconnect": {
+                "title": "SkillConnect (E-learning)",
+                "description": "Full-stack educational platform featuring performance optimization and protected routing",
+                "tech": [
+                    "React",
+                    "Node.js",
+                    "PostgreSQL"
+                ]
+            },
+            "viajaya": {
+                "title": "Viaja Ya (PWA)",
+                "description": "Progressive Web App integrated with Google Maps API and real-time Geolocation",
+                "tech": [
+                    "React",
+                    "Google Maps API",
+                    "PWA"
+                ]
+            }
+        }
+    },
+    "milestones": {
+        "title": "Career Milestones",
+        "timeline": {
+            "orderly": {
+                "title": "Founding Frontend Engineer",
+                "date": "June 2025 - Present",
+                "description": "Orderly - Leading primary UI development and frontend architecture"
+            },
+            "skillconnect": {
+                "title": "Full Stack Web Developer",
+                "date": "February 2025 - April 2025",
+                "description": "SkillConnect - Developed educational platform with performance optimization"
+            },
+            "education": {
+                "title": "Software Engineering",
+                "date": "2022 - Present",
+                "description": "Universidad César Vallejo - Software development training"
+            }
+        }
+    },
+    "cta": {
+        "title": "LET'S BUILD",
+        "titleHighlight": "SOMETHING GREAT",
+        "titleEnd": "TOGETHER",
+        "description": "I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!",
+        "button": "Start a Project",
+        "contact": {
+            "email": "Send Email",
+            "linkedin": "LinkedIn",
+            "github": "GitHub"
+        }
+    },
+    "footer": {
+        "copyright": "© 2026 Anthony Atiro. All rights reserved.",
+        "builtWith": "Built with Next.js & Tailwind CSS"
+    }
+}

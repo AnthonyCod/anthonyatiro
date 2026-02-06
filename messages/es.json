@@ -1,0 +1,129 @@
+{
+    "header": {
+        "nav": {
+            "home": "Inicio",
+            "tech": "Tecnologías",
+            "projects": "Proyectos",
+            "milestones": "Hitos",
+            "contact": "Contacto"
+        },
+        "language": {
+            "en": "Inglés",
+            "es": "Español"
+        }
+    },
+    "hero": {
+        "title": "CONSTRUYENDO",
+        "titleHighlight": "EL FUTURO",
+        "subtitle": "Ingeniero Frontend / Desarrollador Full Stack",
+        "description": "Ingeniero Frontend con sólida experiencia en el ecosistema React (TypeScript, Zustand, Tailwind). Especializado en crear plataformas web escalables y aplicaciones de alto rendimiento en entornos ágiles remotos.",
+        "cta": {
+            "primary": "Contactar",
+            "secondary": "Ver Proyectos"
+        }
+    },
+    "techStack": {
+        "title": "INVENTARIO DE TECNOLOGÍAS",
+        "categories": {
+            "frontend": "Frontend",
+            "backend": "Backend",
+            "database": "Base de Datos & Herramientas",
+            "devops": "DevOps",
+            "tools": "Testing"
+        }
+    },
+    "performance": {
+        "title": "LOGROS Y CERTIFICACIONES",
+        "metrics": {
+            "hackathon": {
+                "title": "Ganador de Hackathon",
+                "value": "1er Lugar",
+                "description": "Competencia Internacional 'Viaja Ya' (Cartagena, Colombia)"
+            },
+            "reactExpert": {
+                "title": "Experto en React",
+                "value": "Certificado",
+                "description": "React: De cero a experto por Udemy"
+            },
+            "nodejs": {
+                "title": "Desarrollador Node.js",
+                "value": "Certificado",
+                "description": "Especialización en desarrollo remoto de Node.js por Platzi"
+            },
+            "bilingual": {
+                "title": "Bilingüe",
+                "value": "C1 / Nativo",
+                "description": "Dominio de inglés avanzado (C1) y español nativo"
+            }
+        }
+    },
+    "deployments": {
+        "title": "Despliegues Recientes",
+        "viewAll": "Ver Todos los Proyectos",
+        "projects": {
+            "orderly": {
+                "title": "Orderly (SaaS de Facturación)",
+                "description": "Desarrollo de la interfaz principal y sistema de componentes reutilizables con React y Bun",
+                "tech": [
+                    "React",
+                    "TypeScript",
+                    "Bun"
+                ]
+            },
+            "skillconnect": {
+                "title": "SkillConnect (E-learning)",
+                "description": "Plataforma educativa con arquitectura Full Stack, optimización de rendimiento y rutas protegidas",
+                "tech": [
+                    "React",
+                    "Node.js",
+                    "PostgreSQL"
+                ]
+            },
+            "viajaya": {
+                "title": "Viaja Ya (PWA)",
+                "description": "Aplicación progresiva con integración de Google Maps API y geolocalización en tiempo real",
+                "tech": [
+                    "React",
+                    "Google Maps API",
+                    "PWA"
+                ]
+            }
+        }
+    },
+    "milestones": {
+        "title": "Hitos de Carrera",
+        "timeline": {
+            "orderly": {
+                "title": "Founding Frontend Engineer",
+                "date": "Junio 2025 - Presente",
+                "description": "Orderly - Liderando el desarrollo de la interfaz principal y arquitectura frontend"
+            },
+            "skillconnect": {
+                "title": "Full Stack Web Developer",
+                "date": "Febrero 2025 - Abril 2025",
+                "description": "SkillConnect - Desarrollo de plataforma educativa con optimización de rendimiento"
+            },
+            "education": {
+                "title": "Ingeniería de Software",
+                "date": "2022 - Presente",
+                "description": "Universidad César Vallejo - Formación en desarrollo de software"
+            }
+        }
+    },
+    "cta": {
+        "title": "CONSTRUYAMOS",
+        "titleHighlight": "ALGO GRANDIOSO",
+        "titleEnd": "JUNTOS",
+        "description": "Siempre estoy interesado en escuchar sobre nuevos proyectos y oportunidades. Ya sea que tengas una pregunta o solo quieras saludar, ¡no dudes en contactarme!",
+        "button": "Iniciar un Proyecto",
+        "contact": {
+            "email": "Enviar Email",
+            "linkedin": "LinkedIn",
+            "github": "GitHub"
+        }
+    },
+    "footer": {
+        "copyright": "© 2026 Anthony Atiro. Todos los derechos reservados.",
+        "builtWith": "Construido con Next.js & Tailwind CSS"
+    }
+}

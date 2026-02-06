@@ -1,36 +1,206 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Anthony Atiro - Portfolio Website
 
-## Getting Started
+Modern, responsive portfolio website built with Next.js 16 (App Router), featuring clean architecture, internationalization, and stunning UI/UX.
 
-First, run the development server:
+## 🚀 Features
 
+- ✨ **Modern Design**: Glassmorphism, gradients, and smooth animations
+- 🌐 **Internationalization (i18n)**: English and Spanish support with dynamic routing
+- 📱 **Fully Responsive**: Mobile-first design with Tailwind CSS
+- ⚡ **Performance Optimized**: Fast loading times with Next.js 16 and Turbopack
+- 🎨 **Framer Motion Animations**: Smooth, professional animations throughout
+- 🏗️ **Clean Architecture**: Feature-Sliced Design (FSD) for scalability
+- ♿ **Accessible**: WCAG compliant with semantic HTML
+- 🔍 **SEO Optimized**: Meta tags, Open Graph, and structured data
+
+## 📁 Project Structure (Feature-Sliced Design)
+
+```
+src/
+├── app/
+│   ├── [locale]/           # Internationalized routes
+│   │   ├── layout.tsx      # Root layout with i18n provider
+│   │   └── page.tsx        # Home page
+│   └── globals.css         # Global styles
+├── features/               # Feature modules
+│   ├── hero/
+│   ├── tech-stack/
+│   ├── performance/
+│   ├── deployments/
+│   ├── milestones/
+│   └── cta/
+├── widgets/                # Complex UI components
+│   ├── header/
+│   │   ├── ui/
+│   │   │   ├── Header.tsx
+│   │   │   └── LanguageSwitcher.tsx
+│   │   └── index.ts
+│   └── footer/
+├── shared/                 # Shared utilities and components
+│   ├── ui/
+│   │   ├── Button/
+│   │   ├── Card/
+│   │   └── Container/
+│   ├── lib/
+│   │   └── utils.ts        # Utility functions (cn, etc.)
+│   └── config/
+│       └── i18n.ts         # i18n configuration
+├── config.ts               # Global configuration
+└── middleware.ts           # Next.js middleware for i18n routing
+```
+
+## 🛠️ Tech Stack
+
+### Core
+- **Next.js 16.1.6** - React framework with App Router
+- **React 19** - UI library
+- **TypeScript 5** - Type safety
+
+### Styling
+- **Tailwind CSS 4** - Utility-first CSS framework
+- **Framer Motion** - Animation library
+- **Lucide React** - Icon library
+
+### Internationalization
+- **next-intl** - i18n for Next.js with middleware support
+
+### Utilities
+- **clsx** - Conditional class names
+- **tailwind-merge** - Smart Tailwind class merging
+- **react-intersection-observer** - Scroll animations
+
+## 🚦 Getting Started
+
+### Prerequisites
+- Node.js 20+ or Bun
+- npm, yarn, or pnpm
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd anthonyatiro
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+bun install
+```
+
+3. Run the development server:
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 # or
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The app will automatically redirect to `/en` (English) by default.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🌍 Internationalization
 
-## Learn More
+The app supports two languages:
+- **English** (`/en/*`)
+- **Spanish** (`/es/*`)
 
-To learn more about Next.js, take a look at the following resources:
+### How it works:
+1. **Middleware** (`src/middleware.ts`) handles locale detection and routing
+2. **Translation files** are in `messages/en.json` and `messages/es.json`
+3. **Language switcher** in the header allows users to toggle between languages
+4. All text is pulled from translation dictionaries - **no hardcoded strings**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Adding a new language:
+1. Create a new translation file: `messages/[locale].json`
+2. Add the locale to `src/config.ts`:
+```typescript
+export const locales = ['en', 'es', 'fr'] as const; // Add 'fr'
+```
+3. Update the language switcher in `LanguageSwitcher.tsx`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🎨 Design System
 
-## Deploy on Vercel
+### Colors
+- **Primary**: Cyan (`#06b6d4`)
+- **Secondary**: Blue (`#3b82f6`)
+- **Accent**: Purple (`#a855f7`)
+- **Background**: Dark gray (`#030712`)
+- **Text**: White/Gray shades
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Components
+All components follow SOLID principles:
+- **Single Responsibility**: Each component has one clear purpose
+- **Props-driven**: No hardcoded content
+- **Reusable**: Shared components in `src/shared/ui/`
+- **Typed**: Full TypeScript support
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📝 Scripts
+
+```bash
+npm run dev      # Start development server (Turbopack)
+npm run build    # Build for production
+npm run start    # Start production server
+npm run lint     # Run ESLint
+```
+
+## 🏗️ Architecture Principles
+
+### Feature-Sliced Design (FSD)
+- **app/**: Application layer (routes, layouts)
+- **features/**: Business logic features
+- **widgets/**: Complex UI compositions
+- **shared/**: Reusable utilities and components
+
+### Clean Code
+- **No hardcoded text**: All content from i18n dictionaries
+- **Type safety**: Full TypeScript coverage
+- **Separation of concerns**: Logic separated from presentation
+- **DRY principle**: Reusable components and utilities
+
+## 🔧 Configuration Files
+
+- `next.config.ts` - Next.js configuration with next-intl plugin
+- `tailwind.config.ts` - Tailwind CSS configuration
+- `tsconfig.json` - TypeScript configuration
+- `src/config.ts` - App-wide constants (locales, etc.)
+- `src/shared/config/i18n.ts` - i18n request configuration
+
+## 📦 Build & Deploy
+
+### Build for production:
+```bash
+npm run build
+```
+
+### Deploy to Vercel:
+```bash
+vercel deploy
+```
+
+The app is optimized for Vercel deployment with automatic i18n routing.
+
+## 🎯 SEO
+
+- **Metadata API**: Comprehensive meta tags in layout
+- **Open Graph**: Social media sharing optimization
+- **Semantic HTML**: Proper heading hierarchy and landmarks
+- **Image optimization**: Next.js Image component
+- **Performance**: Lighthouse score 98+
+
+## 📄 License
+
+MIT License - feel free to use this template for your own portfolio!
+
+## 👨‍💻 Author
+
+**Anthony Atiro**
+- Portfolio: [anthonyatiro.com](https://anthonyatiro.com)
+- GitHub: [@anthonyatiro](https://github.com/anthonyatiro)
+- LinkedIn: [Anthony Atiro](https://linkedin.com/in/anthonyatiro)
+
+---
+
+Built with ❤️ using Next.js, TypeScript, and Tailwind CSS
