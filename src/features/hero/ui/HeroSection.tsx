@@ -139,12 +139,12 @@ export function HeroSection() {
             className="relative flex justify-center lg:justify-end"
           >
             {/* Just the image, floating delightfully */}
-            <div className="relative w-80 h-80 md:w-[32rem] md:h-[32rem]">
+            <div className="relative w-[22rem] h-[22rem] md:w-[30rem] md:h-[30rem]">
               {/* Optional: Subtle colored glow BEHIND the image to separate it from dark bg */}
               <div className="absolute inset-0 bg-cyan-500/20 blur-[100px] rounded-full opacity-50" />
 
               <Image
-                src="/image.png"
+                src="/new-hero.png"
                 alt="Desarrollador"
                 fill
                 priority
