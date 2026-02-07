@@ -15,8 +15,8 @@
     "hero": {
         "title": "CONSTRUYENDO",
         "titleHighlight": "EL FUTURO",
-        "subtitle": "Ingeniero de Sotware / Desarrollador Full Stack",
-        "description": "Ingeniero de Sotware con sólida experiencia en el ecosistema React (TypeScript, Zustand, Tailwind). Especializado en crear plataformas web escalables y aplicaciones de alto rendimiento en entornos ágiles remotos.",
+        "subtitle": "Ingeniero de Software / Desarrollador Full Stack",
+        "description": "Ingeniero de Software con sólida experiencia en el ecosistema React (TypeScript, Zustand, Tailwind) y desarrollo backend con Node.js y Express. Especializado en crear plataformas web escalables y aplicaciones de alto rendimiento en entornos ágiles remotos.",
         "cta": {
             "primary": "Contactar",
             "secondary": "Ver Proyectos"
@@ -71,61 +71,58 @@
                     "Bun",
                     "Zustand",
                     "Tailwind CSS",
-                    "React Hook Form"
+                    "React Hook Form",
+                    "NestJs",
+                    "Hexagonal Architecture"
                 ]
             },
             "serviestiba": {
                 "title": "Serviestiba (Gestión Logística)",
                 "description": "Sistema de gestión para operaciones de estiba y logística portuaria",
-                "fullDescription": "Sistema integral de gestión logística desarrollado para optimizar las operaciones de estiba en puertos y almacenes. Construí una aplicación web completa que permite el seguimiento en tiempo real de contenedores, asignación de recursos, y generación de reportes operativos. La plataforma incluye un dashboard interactivo con visualizaciones de datos usando Chart.js, sistema de notificaciones en tiempo real con WebSockets, y una API RESTful robusta construida con Node.js y Express. Implementé autenticación JWT, manejo de roles de usuario (operadores, supervisores, administradores), y optimización de consultas a PostgreSQL para manejar grandes volúmenes de datos operativos.",
+                "fullDescription": "Serviestiba es un proyecto web de gestión de requerimientos y control de servicios, diseñado para optimizar la administración de operaciones de estiba en distintas empresas y sedes, como Molitalia o Nestlé. La plataforma permite organizar y controlar los servicios de estiba, incluyendo la asignación de estibadores a cada requerimiento, el registro de asistencias y faltas, y el seguimiento detallado de cada operación. Además, el sistema ofrece la posibilidad de subir y gestionar documentos en formato PDF, vinculándolos directamente con la información de los servicios, empresas y personal asignado, centralizando así toda la documentación en un solo lugar.",
                 "tech": [
                     "React",
                     "Node.js",
+                    "Vite",
                     "Express",
-                    "PostgreSQL",
-                    "WebSockets",
-                    "Chart.js",
-                    "JWT"
+                    "Zustand"
                 ]
             },
             "viajaya": {
                 "title": "Viaja Ya (PWA)",
                 "description": "Aplicación progresiva con integración de Google Maps API y geolocalización en tiempo real",
-                "fullDescription": "Progressive Web App ganadora del primer lugar en hackathon internacional en Cartagena, Colombia. Desarrollé una plataforma de transporte compartido que conecta conductores y pasajeros en tiempo real. La aplicación utiliza Google Maps API para rutas optimizadas, geolocalización en tiempo real, y cálculo automático de tarifas. Implementé características PWA avanzadas como funcionamiento offline, notificaciones push, y instalación en dispositivo. El backend está construido con Node.js y utiliza Socket.io para comunicación bidireccional en tiempo real. Incluye sistema de calificaciones, historial de viajes, y pasarela de pagos integrada. La aplicación está optimizada para rendimiento móvil con lazy loading y code splitting.",
+                "fullDescription": "Progressive Web App ganadora del primer lugar en hackathon internacional en Cartagena, Colombia. Desarrollé una plataforma que utiliza Google Maps API para rutas optimizadas y geolocalización en tiempo real. Implementé características PWA avanzadas como funcionamiento offline, notificaciones push, y instalación en dispositivo. Lo más destacado es su agente de Inteligencia Artificial, que genera itinerarios personalizados basándose en los gustos y preferencias del usuario al usar la aplicación, mejorando significativamente la experiencia de viaje. El backend está construido con Node.js y la aplicación está optimizada para rendimiento móvil con lazy loading y code splitting.",
                 "tech": [
                     "React",
                     "Google Maps API",
                     "PWA",
-                    "Socket.io",
                     "Node.js",
-                    "MongoDB"
+                    "MongoDB",
+                    "Docker"
                 ]
             },
             "altoq": {
-                "title": "Altoq (E-commerce B2B)",
-                "description": "Plataforma de comercio electrónico para transacciones empresariales mayoristas",
-                "fullDescription": "Plataforma de comercio electrónico B2B especializada en ventas mayoristas y gestión de inventario para distribuidores. Desarrollé el frontend completo utilizando Next.js para optimización SEO y renderizado del lado del servidor. La plataforma incluye un sistema de catálogo de productos con búsqueda avanzada y filtros dinámicos, carrito de compras persistente, gestión de órdenes de compra, y seguimiento de envíos. Implementé un dashboard administrativo completo para gestión de inventario, análisis de ventas, y administración de clientes corporativos. Utilicé React Query para caché inteligente de datos, Stripe para procesamiento de pagos, y un sistema de notificaciones por email automatizado. La arquitectura backend está construida con Node.js, Express y PostgreSQL.",
+                "title": "Altoq (Voto Informado Perú 2026)",
+                "description": "Plataforma web informativa sobre partidos políticos y voto informado para las elecciones Perú 2026",
+                "fullDescription": "Plataforma web cívica dedicada a fomentar el voto informado en Perú de cara a las elecciones generales de 2026. La aplicación centraliza y presenta información detallada sobre partidos políticos, hojas de vida de candidatos y planes de gobierno de manera accesible y transparente. Desarrollé la interfaz de usuario con Next.js priorizando la velocidad y el SEO para maximizar el alcance ciudadano. Implementé herramientas interactivas para comparar propuestas, visualizar el historial de los candidatos y acceder a recursos educativos electorales, todo con el objetivo de fortalecer la democracia mediante el acceso a la información.",
                 "tech": [
                     "Next.js",
                     "React",
                     "TypeScript",
                     "Node.js",
                     "PostgreSQL",
-                    "Stripe",
                     "React Query"
                 ]
             },
             "skillconnect": {
                 "title": "SkillConnect (E-learning)",
                 "description": "Plataforma educativa con arquitectura Full Stack, optimización de rendimiento y rutas protegidas",
-                "fullDescription": "Plataforma educativa completa diseñada para conectar instructores y estudiantes en un entorno de aprendizaje interactivo. Desarrollé tanto el frontend como el backend, implementando un sistema de gestión de cursos con video streaming, evaluaciones interactivas, y seguimiento de progreso del estudiante. La arquitectura incluye autenticación segura con JWT, rutas protegidas basadas en roles, y un sistema de permisos granular. Optimicé el rendimiento mediante lazy loading de componentes, code splitting, y caché estratégico con React Query. El backend utiliza Node.js con Express, PostgreSQL para datos relacionales, y AWS S3 para almacenamiento de contenido multimedia. Implementé un sistema de calificaciones automatizado, foros de discusión en tiempo real, y certificados digitales generados dinámicamente.",
+                "fullDescription": "Plataforma web educativa diseñada para ofrecer una experiencia de aprendizaje estructurada mediante cursos previamente grabados. Desarrollé una solución integral que permite a los estudiantes acceder a contenido de video bajo demanda, realizar cuestionarios interactivos para evaluar su nivel de conocimiento y realizar un seguimiento detallado de su progreso. La plataforma incluye autenticación segura, gestión de perfiles de usuario y un sistema de evaluación automatizado. El enfoque principal fue crear una interfaz intuitiva y rápida, optimizando la entrega de contenido multimedia y asegurando una navegación fluida entre lecciones y módulos de evaluación.",
                 "tech": [
                     "React",
                     "Node.js",
                     "Express",
                     "PostgreSQL",
-                    "AWS S3",
-                    "JWT",
                     "React Query"
                 ]
             }
@@ -143,24 +140,34 @@
         "title": "Hitos de Carrera",
         "timeline": {
             "orderly": {
-                "title": "Founding Frontend Engineer",
-                "date": "Junio 2025 - Presente",
-                "description": "Orderly - Liderando el desarrollo de la interfaz principal y arquitectura frontend"
+                "title": "Primera Hackatón Ganada",
+                "date": "Enero 2024",
+                "description": "Ganador de la primera hackatón a nivel de toda la carrera de Ingeniería de Software, desarrollando un proyecto web educativo enfocado en mejorar el aprendizaje mediante soluciones tecnológicas innovadoras y trabajo colaborativo."
+            },
+            "serviestiba": {
+                "title": "Capacitación en Tecnologías Web",
+                "date": "Marzo 2025",
+                "description": "Formación continua en tecnologías web y frameworks modernos, orientada al desarrollo de soluciones tecnológicas escalables, buenas prácticas de desarrollo y uso de herramientas actuales del ecosistema frontend y backend."
+            },
+            "viajaya": {
+                "title": "Kodo Takai – Competencia Internacional",
+                "date": "Octubre 2025",
+                "description": "Ganadores de la competencia internacional Kodo Takai, realizada en Cartagena, Colombia. Se desarrolló un PWA (Progressive Web App) enfocado en la resolución de problemas mediante Inteligencia Artificial, incorporando sistemas de recomendación y la API de Google Maps para ofrecer soluciones inteligentes basadas en ubicación."
+            },
+            "altoq": {
+                "title": "Atomic Design – Charla Académica",
+                "date": "Noviembre 2025",
+                "description": "Expositor de la charla “Atomic Design” en una universidad de Colombia, donde se explicó la importancia de esta arquitectura de diseño frontend, sus beneficios en escalabilidad, reutilización de componentes y mantenimiento de aplicaciones modernas."
             },
             "skillconnect": {
-                "title": "Full Stack Web Developer",
-                "date": "Febrero 2025 - Abril 2025",
-                "description": "SkillConnect - Desarrollo de plataforma educativa con optimización de rendimiento"
-            },
-            "education": {
-                "title": "Ingeniería de Software",
-                "date": "2022 - Presente",
-                "description": "Universidad César Vallejo - Formación en desarrollo de software"
+                "title": "Full Stack Developer",
+                "date": "Presente",
+                "description": "Full Stack Developer con más de 2 años de experiencia profesional, participando en el desarrollo de proyectos SaaS, sistemas de facturación electrónica, plataformas empresariales y soluciones web completas. Experiencia aportando tanto en frontend como backend, colaborando en equipos de desarrollo, optimizando procesos, integrando APIs y construyendo soluciones orientadas al negocio."
             }
         }
     },
     "cta": {
-        "title": "CONSTRUYAMOS",
+        "title": "DESARROLLEMOS",
         "titleHighlight": "ALGO GRANDIOSO",
         "titleEnd": "JUNTOS",
         "description": "Siempre estoy interesado en escuchar sobre nuevos proyectos y oportunidades. Ya sea que tengas una pregunta o solo quieras saludar, ¡no dudes en contactarme!",

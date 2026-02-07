@@ -16,7 +16,7 @@
         "title": "ENGINEERING",
         "titleHighlight": "THE FUTURE",
         "subtitle": "Software Engineer / Full Stack Developer",
-        "description": "Software Engineer with strong expertise in the React ecosystem (TypeScript, Zustand, Tailwind). Proven experience building scalable web platforms and high-performance applications in remote agile environments.",
+        "description": "Software Engineer with strong expertise in the React ecosystem (TypeScript, Zustand, Tailwind) and backend development with Node.js and Express. Proven experience building scalable web platforms and high-performance applications in remote agile environments.",
         "cta": {
             "primary": "Get in Touch",
             "secondary": "View Projects"
@@ -71,61 +71,58 @@
                     "Bun",
                     "Zustand",
                     "Tailwind CSS",
-                    "React Hook Form"
+                    "React Hook Form",
+                    "NestJs",
+                    "Hexagonal Architecture"
                 ]
             },
             "serviestiba": {
                 "title": "Serviestiba (Logistics Management)",
                 "description": "Management system for stevedoring and port logistics operations",
-                "fullDescription": "Comprehensive logistics management system developed to optimize stevedoring operations in ports and warehouses. Built a complete web application that enables real-time container tracking, resource allocation, and operational report generation. The platform includes an interactive dashboard with data visualizations using Chart.js, real-time notification system with WebSockets, and a robust RESTful API built with Node.js and Express. Implemented JWT authentication, user role management (operators, supervisors, administrators), and PostgreSQL query optimization to handle large volumes of operational data.",
+                "fullDescription": "Serviestiba is a web-based requirement management and service control project designed to optimize stevedoring operations across various companies and branches, such as Molitalia or Nestlé. The platform enables the organization and control of stevedoring services, including assigning stevedores to requirements, tracking attendance and absences, and monitoring operations in detail. Additionally, the system features PDF document management, linking files directly to services, companies, and assigned personnel, thereby centralizing all documentation in one place.",
                 "tech": [
                     "React",
                     "Node.js",
+                    "Vite",
                     "Express",
-                    "PostgreSQL",
-                    "WebSockets",
-                    "Chart.js",
-                    "JWT"
+                    "Zustand"
                 ]
             },
             "viajaya": {
                 "title": "Viaja Ya (PWA)",
                 "description": "Progressive Web App integrated with Google Maps API and real-time Geolocation",
-                "fullDescription": "Progressive Web App that won first place in an international hackathon in Cartagena, Colombia. Developed a ride-sharing platform that connects drivers and passengers in real-time. The application uses Google Maps API for optimized routes, real-time geolocation, and automatic fare calculation. Implemented advanced PWA features such as offline functionality, push notifications, and device installation. The backend is built with Node.js and uses Socket.io for real-time bidirectional communication. Includes rating system, trip history, and integrated payment gateway. The application is optimized for mobile performance with lazy loading and code splitting.",
+                "fullDescription": "Progressive Web App that won first place in an international hackathon in Cartagena, Colombia. Developed a platform utilizing Google Maps API for optimized routes and real-time geolocation. Implemented advanced PWA features such as offline functionality, push notifications, and device installation. A standout feature is its Artificial Intelligence agent, which generates personalized itineraries based on user tastes and preferences within the app, significantly enhancing the travel experience. The backend is built with Node.js, and the application is optimized for mobile performance with lazy loading and code splitting.",
                 "tech": [
                     "React",
                     "Google Maps API",
                     "PWA",
-                    "Socket.io",
                     "Node.js",
-                    "MongoDB"
+                    "MongoDB",
+                    "Docker"
                 ]
             },
             "altoq": {
-                "title": "Altoq (B2B E-commerce)",
-                "description": "E-commerce platform for wholesale business transactions",
-                "fullDescription": "B2B e-commerce platform specialized in wholesale sales and inventory management for distributors. Developed the complete frontend using Next.js for SEO optimization and server-side rendering. The platform includes a product catalog system with advanced search and dynamic filters, persistent shopping cart, purchase order management, and shipment tracking. Implemented a complete administrative dashboard for inventory management, sales analytics, and corporate client administration. Used React Query for intelligent data caching, Stripe for payment processing, and an automated email notification system. The backend architecture is built with Node.js, Express, and PostgreSQL.",
+                "title": "Altoq (Informed Vote Peru 2026)",
+                "description": "Web platform providing information on political parties and promoting informed voting for the Peru 2026 elections",
+                "fullDescription": "Civic web platform dedicated to promoting informed voting in Peru ahead of the 2026 general elections. The application centralizes and presents detailed information on political parties, candidate resumes, and government plans in an accessible and transparent manner. I developed the user interface using Next.js, prioritizing speed and SEO to maximize citizen reach. Implemented interactive tools to compare proposals, visualize candidate histories, and access electoral educational resources, all aimed at strengthening democracy through information access.",
                 "tech": [
                     "Next.js",
                     "React",
                     "TypeScript",
                     "Node.js",
                     "PostgreSQL",
-                    "Stripe",
                     "React Query"
                 ]
             },
             "skillconnect": {
                 "title": "SkillConnect (E-learning)",
                 "description": "Full-stack educational platform featuring performance optimization and protected routing",
-                "fullDescription": "Complete educational platform designed to connect instructors and students in an interactive learning environment. Developed both frontend and backend, implementing a course management system with video streaming, interactive assessments, and student progress tracking. The architecture includes secure authentication with JWT, role-based protected routes, and a granular permission system. Optimized performance through component lazy loading, code splitting, and strategic caching with React Query. The backend uses Node.js with Express, PostgreSQL for relational data, and AWS S3 for multimedia content storage. Implemented an automated grading system, real-time discussion forums, and dynamically generated digital certificates.",
+                "fullDescription": "Educational web platform designed to offer a structured learning experience through pre-recorded courses. I developed a comprehensive solution that allows students to access on-demand video content, take interactive quizzes to assess their knowledge level, and track their progress in detail. The platform includes secure authentication, user profile management, and an automated assessment system. The main focus was to create an intuitive and fast interface, optimizing multimedia content delivery and ensuring smooth navigation between lessons and evaluation modules.",
                 "tech": [
                     "React",
                     "Node.js",
                     "Express",
                     "PostgreSQL",
-                    "AWS S3",
-                    "JWT",
                     "React Query"
                 ]
             }
@@ -143,24 +140,34 @@
         "title": "Career Milestones",
         "timeline": {
             "orderly": {
-                "title": "Founding Frontend Engineer",
-                "date": "June 2025 - Present",
-                "description": "Orderly - Leading primary UI development and frontend architecture"
+                "title": "First Hackathon Won",
+                "date": "January 2024",
+                "description": "Winner of the first hackathon in the entire Software Engineering career, developing an educational web project focused on improving learning through innovative technological solutions and collaborative work."
+            },
+            "serviestiba": {
+                "title": "Web Technologies Training",
+                "date": "March 2025",
+                "description": "Continuous training in web technologies and modern frameworks, oriented towards the development of scalable technological solutions, development best practices, and use of current frontend and backend ecosystem tools."
+            },
+            "viajaya": {
+                "title": "Kodo Takai – International Competition",
+                "date": "October 2025",
+                "description": "Winners of the international Kodo Takai competition, held in Cartagena, Colombia. A PWA (Progressive Web App) was developed focused on problem-solving through Artificial Intelligence, incorporating recommendation systems and the Google Maps API to offer smart location-based solutions."
+            },
+            "altoq": {
+                "title": "Atomic Design – Academic Talk",
+                "date": "November 2025",
+                "description": "Speaker at the \"Atomic Design\" talk at a university in Colombia, explaining the importance of this frontend design architecture, its benefits in scalability, component reuse, and maintenance of modern applications."
             },
             "skillconnect": {
-                "title": "Full Stack Web Developer",
-                "date": "February 2025 - April 2025",
-                "description": "SkillConnect - Developed educational platform with performance optimization"
-            },
-            "education": {
-                "title": "Software Engineering",
-                "date": "2022 - Present",
-                "description": "Universidad César Vallejo - Software development training"
+                "title": "Full Stack Developer",
+                "date": "Present",
+                "description": "Full Stack Developer with over 2 years of professional experience, participating in the development of SaaS projects, electronic invoicing systems, enterprise platforms, and complete web solutions. Experience contributing to both frontend and backend, collaborating in development teams, optimizing processes, integrating APIs, and building business-oriented solutions."
             }
         }
     },
     "cta": {
-        "title": "LET'S BUILD",
+        "title": "LET'S DEVELOP",
         "titleHighlight": "SOMETHING GREAT",
         "titleEnd": "TOGETHER",
         "description": "I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!",

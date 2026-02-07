@@ -12,9 +12,31 @@ import { Card } from '@/shared/ui/Card/Card';
 const projectGallery = {
     orderly: ['/projects/orderly/first.png', '/projects/orderly/second.png'],
     serviestiba: ['/projects/serviestiba/first.png', '/projects/serviestiba/second.png', '/projects/serviestiba/third.png', '/projects/serviestiba/fourth.png'],
-    viajaya: ['/projects/viaja-1.jpg'], // Pending images
+    viajaya: ['/projects/viajaya/first.png', '/projects/viajaya/second.png', '/projects/viajaya/third.png', '/projects/viajaya/fourth.png'],
     altoq: ['/projects/altoq/first.png', '/projects/altoq/second.png', '/projects/altoq/third.png'],
     skillconnect: ['/projects/skillconnect/first.png', '/projects/skillconnect/second.png', '/projects/skillconnect/third.png']
+};
+
+const projectLinks: Record<string, { repo?: string; demo?: string }> = {
+    orderly: {
+        repo: 'https://github.com/CodeUp-Labs/ordely-frontend'
+    },
+    serviestiba: {
+        repo: 'https://github.com/AnthonyCod/serviestiba-back',
+        demo: 'https://serviestiba-front.vercel.app/login'
+    },
+    viajaya: {
+        repo: 'https://github.com/Kodo-Takai/frontend-app-kodotakai',
+        demo: 'https://frontend-app-kodotakai-demo.vercel.app/'
+    },
+    altoq: {
+        repo: 'https://github.com/AltoqOfficial/altoq-pwa',
+        demo: 'https://altoqperu.com'
+    },
+    skillconnect: {
+        repo: 'https://github.com/AnthonyCod/SkillConnect',
+        demo: 'https://anthonycod.github.io/SkillConnect/'
+    }
 };
 
 export function DeploymentsSection() {
@@ -52,6 +74,7 @@ export function DeploymentsSection() {
     };
 
     const projects = ['orderly', 'serviestiba', 'viajaya', 'altoq', 'skillconnect'];
+    const currentLinks = selectedProject ? projectLinks[selectedProject] : null;
 
     return (
         <section id="projects" className="py-24 relative overflow-hidden">
@@ -161,7 +184,7 @@ export function DeploymentsSection() {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             onClick={() => setSelectedProject(null)}
-                            className="absolute inset-0 bg-black/95 backdrop-blur-sm"
+                            className="absolute inset-0 bg-black/60 backdrop-blur-md"
                         />
 
                         {/* Modal Content */}
@@ -259,14 +282,47 @@ export function DeploymentsSection() {
                                                 {t('modal.links')}
                                             </h4>
                                             <div className="flex gap-3">
-                                                <a href="#" className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-white transition-colors" target="_blank" rel="noopener noreferrer">
-                                                    <Github className="w-5 h-5" />
-                                                    <span>{t('modal.code')}</span>
-                                                </a>
-                                                <a href="#" className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/20 rounded-lg text-cyan-400 transition-colors" target="_blank" rel="noopener noreferrer">
-                                                    <ExternalLink className="w-5 h-5" />
-                                                    <span>{t('modal.demo')}</span>
-                                                </a>
+                                                {/* Repo Link */}
+                                                {currentLinks?.repo ? (
+                                                    <a
+                                                        href={currentLinks.repo}
+                                                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-white transition-colors"
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        <Github className="w-5 h-5" />
+                                                        <span>{t('modal.code')}</span>
+                                                    </a>
+                                                ) : (
+                                                    <button
+                                                        disabled
+                                                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white/5 border border-white/5 rounded-lg text-gray-500 cursor-not-allowed opacity-50"
+                                                    >
+                                                        <Github className="w-5 h-5" />
+                                                        <span>{t('modal.code')}</span>
+                                                    </button>
+                                                )}
+
+                                                {/* Demo Link */}
+                                                {currentLinks?.demo ? (
+                                                    <a
+                                                        href={currentLinks.demo}
+                                                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/20 rounded-lg text-cyan-400 transition-colors"
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        <ExternalLink className="w-5 h-5" />
+                                                        <span>{t('modal.demo')}</span>
+                                                    </a>
+                                                ) : (
+                                                    <button
+                                                        disabled
+                                                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-cyan-900/10 border border-cyan-900/10 rounded-lg text-cyan-900/40 cursor-not-allowed opacity-50"
+                                                    >
+                                                        <ExternalLink className="w-5 h-5" />
+                                                        <span>{t('modal.demo')}</span>
+                                                    </button>
+                                                )}
                                             </div>
                                         </div>
 

@@ -16,14 +16,17 @@ import {
     SiTypescript,
     SiJavascript,
     SiTailwindcss,
-    SiNestjs,
+    SiReactquery,
     SiPrisma,
     SiBun,
     SiPostgresql,
     SiMysql,
     SiJest,
     SiTestinglibrary,
-    SiGraphql // Placeholder for TypeORM/Zustand if needed, but trying specific first
+    SiExpress,
+    SiPostman,
+    SiSwagger,
+    SiMongodb
 } from 'react-icons/si';
 import { FaNodeJs, FaDocker, FaGitAlt, FaDatabase, FaLayerGroup } from 'react-icons/fa';
 import { Container } from '@/shared/ui/Container/Container';
@@ -35,24 +38,28 @@ const techData = {
         { name: 'TypeScript', icon: SiTypescript },
         { name: 'JavaScript (ES6+)', icon: SiJavascript },
         { name: 'Tailwind CSS', icon: SiTailwindcss },
-        { name: 'Zustand', icon: FaLayerGroup } // Using conservative fallback for Zustand
+        { name: 'React Query', icon: SiReactquery },
+        { name: 'Zustand', icon: FaLayerGroup }
     ],
     backend: [
         { name: 'Node.js', icon: FaNodeJs },
-        { name: 'NestJS', icon: SiNestjs },
-        { name: 'TypeORM', icon: FaDatabase }, // Using generic DB icon for TypeORM to be safe
-        { name: 'Prisma', icon: SiPrisma }
+        { name: 'Express', icon: SiExpress },
+        { name: 'TypeORM', icon: FaDatabase },
+        { name: 'Prisma', icon: SiPrisma },
+        { name: 'Swagger', icon: SiSwagger }
     ],
     database: [
         { name: 'Bun', icon: SiBun },
         { name: 'Docker', icon: FaDocker },
         { name: 'PostgreSQL', icon: SiPostgresql },
         { name: 'MySQL', icon: SiMysql },
+        { name: 'MongoDB', icon: SiMongodb },
         { name: 'Git', icon: FaGitAlt }
     ],
     tools: [
         { name: 'Jest', icon: SiJest },
-        { name: 'React Testing Library', icon: SiTestinglibrary }
+        { name: 'React Testing Library', icon: SiTestinglibrary },
+        { name: 'Postman', icon: SiPostman }
     ]
 };
 

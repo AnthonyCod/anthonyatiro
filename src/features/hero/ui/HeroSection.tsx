@@ -29,17 +29,17 @@ export function HeroSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
             className="space-y-8 text-center lg:text-left flex flex-col items-center lg:items-start"
           >
             {/* Title */}
             <div className="space-y-4">
               <motion.h1
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.8 }}
+                transition={{ delay: 0.1, duration: 0.5 }}
                 className="text-5xl md:text-7xl font-bold leading-tight"
               >
                 <span className="text-white">{t("title")}</span>
@@ -50,9 +50,9 @@ export function HeroSection() {
               </motion.h1>
 
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.8 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
                 className="text-xl text-cyan-400 font-semibold"
               >
                 {t("subtitle")}
@@ -61,9 +61,9 @@ export function HeroSection() {
 
             {/* Description */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
               className="text-lg text-gray-400 leading-relaxed max-w-xl mx-auto lg:mx-0"
             >
               {t("description")}
@@ -71,14 +71,14 @@ export function HeroSection() {
 
             {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start w-full sm:w-auto"
             >
-              <a 
-                href="https://www.linkedin.com/in/luis-anthony-atiro-vargas-98b608289" 
-                target="_blank" 
+              <a
+                href="https://www.linkedin.com/in/luis-anthony-atiro-vargas-98b608289"
+                target="_blank"
                 rel="noopener noreferrer"
               >
                 <Button variant="primary" size="lg" className="group w-full sm:w-auto">
@@ -95,9 +95,9 @@ export function HeroSection() {
 
             {/* Social Links */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.8 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
               className="flex gap-4 items-center justify-center lg:justify-start relative z-30"
             >
               <a
@@ -133,20 +133,23 @@ export function HeroSection() {
 
           {/* Right Content - Profile Image (Clean PNG) */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="relative flex justify-center lg:justify-end"
           >
             {/* Just the image, floating delightfully */}
-            <div className="relative w-80 h-80 md:w-[32rem] md:h-[32rem]">
+            <div className="relative w-[22rem] h-[22rem] md:w-[30rem] md:h-[30rem]">
               {/* Optional: Subtle colored glow BEHIND the image to separate it from dark bg */}
               <div className="absolute inset-0 bg-cyan-500/20 blur-[100px] rounded-full opacity-50" />
 
-              <img
-                src="/image.png?v=new_upload"
+              <Image
+                src="/new-hero.png"
                 alt="Desarrollador"
-                className="w-full h-full object-contain drop-shadow-2xl"
+                fill
+                priority
+                className="object-contain drop-shadow-2xl"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
           </motion.div>

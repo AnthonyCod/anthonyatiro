@@ -44,8 +44,9 @@ export function Header() {
                     {/* Logo */}
                     <Link
                         href="/"
-                        className="text-xl font-bold text-gray-300 bg-clip-text hover:scale-105 transition-transform duration-200"
+                        className="text-xl font-bold text-gray-300 bg-clip-text hover:scale-105 transition-transform duration-200 flex items-center gap-2"
                     >
+                        <span className="text-2xl">👨🏻‍💻</span>
                         Anthony Atiro
                     </Link>
 

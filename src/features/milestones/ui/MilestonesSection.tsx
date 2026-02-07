@@ -9,8 +9,10 @@ import { Card } from '@/shared/ui/Card/Card';
 
 const milestoneIcons = {
     orderly: Briefcase,
-    skillconnect: Code,
-    education: GraduationCap
+    serviestiba: Briefcase,
+    viajaya: Briefcase,
+    altoq: Briefcase,
+    skillconnect: Code
 };
 
 export function MilestonesSection() {
@@ -20,12 +22,14 @@ export function MilestonesSection() {
         threshold: 0.1
     });
 
-    const milestones = ['orderly', 'skillconnect', 'education'];
+    const milestones = ['orderly', 'serviestiba', 'viajaya', 'altoq', 'skillconnect'];
 
     const milestoneImages = {
-        orderly: '/image.png', // Replace with actual project/experience images
-        skillconnect: '/image.png',
-        education: '/image.png'
+        orderly: '/lineTime/first.jpeg',
+        serviestiba: '/lineTime/second.jpeg',
+        viajaya: '/lineTime/third.jpeg',
+        altoq: '/lineTime/fourth.jpeg',
+        skillconnect: '/lineTime/fifth.jpeg'
     };
 
     return (
@@ -56,7 +60,7 @@ export function MilestonesSection() {
                 <div className="relative pt-16">
                     {/* Horizontal Axis Line - Now clearly visible as the 'Time Spine' */}
                     <div className="absolute top-[5.5rem] left-0 w-full h-0.5 bg-linear-to-r from-transparent via-cyan-500/30 to-transparent pointer-events-none" />
-                    
+
                     <div className="flex overflow-x-auto gap-8 pb-12 px-4 md:px-0 scrollbar-hide snap-x snap-mandatory py-10">
                         {milestones.map((milestone, index) => {
                             // @ts-ignore
@@ -76,23 +80,23 @@ export function MilestonesSection() {
                                         <div className="mb-3 px-4 py-1 rounded-full bg-cyan-950/50 border border-cyan-500/30 text-cyan-400 font-bold text-sm tracking-widest uppercase backdrop-blur-md shadow-[0_0_15px_rgba(34,211,238,0.2)]">
                                             {t(`timeline.${milestone}.date`)}
                                         </div>
-                                        
+
                                         {/* The Dot on the Axis */}
                                         <div className="w-4 h-4 bg-cyan-400 rounded-full shadow-[0_0_15px_rgba(34,211,238,1)] border-2 border-gray-900 relative z-10 box-content" />
-                                        
+
                                         {/* Vertical Connector Line to Card */}
                                         <div className="w-0.5 h-8 bg-linear-to-b from-cyan-400 to-transparent opacity-50" />
                                     </div>
 
                                     {/* Content Card */}
-                                    <Card variant="glass" className="w-full mt-8 overflow-hidden flex flex-col group border-gray-800 hover:border-cyan-500/50 transition-all duration-700 ease-in-out shadow-lg hover:shadow-cyan-900/20">
+                                    <Card variant="glass" className="w-full h-full mt-8 overflow-hidden flex flex-col group border-gray-800 hover:border-cyan-500/50 transition-all duration-700 ease-in-out shadow-lg hover:shadow-cyan-900/20">
                                         {/* Image */}
                                         {imagePath && (
-                                            <div className="relative h-56 w-full overflow-hidden shrink-0">
+                                            <div className="relative h-72 w-full overflow-hidden shrink-0">
                                                 <div className="absolute inset-0 bg-gray-900/10 group-hover:bg-transparent transition-colors duration-700 ease-in-out z-10" />
                                                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                                                <img 
-                                                    src={imagePath} 
+                                                <img
+                                                    src={imagePath}
                                                     alt={t(`timeline.${milestone}.title`)}
                                                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-in-out"
                                                 />
@@ -103,7 +107,7 @@ export function MilestonesSection() {
                                         <div className="p-6 flex flex-col flex-1 relative">
                                             {/* Decorative top grad */}
                                             <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-cyan-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out" />
-                                            
+
                                             <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-700 ease-in-out">
                                                 {t(`timeline.${milestone}.title`)}
                                             </h3>
