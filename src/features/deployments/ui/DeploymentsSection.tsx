@@ -184,7 +184,7 @@ export function DeploymentsSection() {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             onClick={() => setSelectedProject(null)}
-                            className="absolute inset-0 bg-black/60 backdrop-blur-md"
+                            className="absolute inset-0 bg-black/95 backdrop-blur-sm"
                         />
 
                         {/* Modal Content */}
